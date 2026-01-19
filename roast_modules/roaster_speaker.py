@@ -6,6 +6,20 @@ from data.roasts import ROASTS
 from data.praises import PRAISES
 
 
+def speak(text):
+    
+    def _speak():
+        try:
+            phrase = text
+            print(f"\nSPEAKING: {phrase}")
+            engine = pyttsx3.init()
+            engine.setProperty('rate', 160)
+            engine.say(phrase)
+            engine.runAndWait()
+        except:
+            pass
+    threading.Thread(target=_speak).start()
+
 def speak_alert(speak_type):
     
     def _speak():
@@ -14,7 +28,7 @@ def speak_alert(speak_type):
                 phrase = random.choice(ROASTS)
             else:
                 phrase = random.choice(PRAISES)
-            print(f"💀 SPEAKING: {phrase}")
+            print(f"\nSPEAKING: {phrase}")
             engine = pyttsx3.init()
             engine.setProperty('rate', 160)
             engine.say(phrase)
