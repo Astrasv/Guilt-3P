@@ -1,0 +1,83 @@
+Metadata-Version: 2.4
+Name: guilt-3p
+Version: 0.1.0
+Summary: A productivity tool that roasts you for slacking off.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: flask>=3.1.2
+Requires-Dist: flask-cors>=6.0.2
+Requires-Dist: gtts>=2.5.4
+Requires-Dist: playsound==1.2.2
+Requires-Dist: plyer>=2.1.0
+Requires-Dist: psutil>=7.2.1
+Requires-Dist: pyttsx3>=2.99
+Requires-Dist: platformdirs>=4.0.0
+Requires-Dist: textual>=0.47.1
+
+# Guilt-3P (Formerly Roast-Proto)
+
+Guilt-3P is a productivity tool that actively roasts you when you get distracted. It monitors your active windows and browser URLs (via extension) and uses TTS to shame you back to work.
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+## Setup
+
+1.  **Initialize Config**: Create a customization file for your own roasts/forbidden sites.
+    ```bash
+    guilt-3p init-config
+    ```
+    This creates a `config.json` (location shown in output) where you can add:
+    - `custom_roasts`: List of strings.
+    - `custom_forbidden`: List of domain keywords (e.g., "twitter").
+    - `custom_browsers`: List of browser process names.
+
+2.  **Install Extension**: The browser extension is required to track URLs.
+    ```bash
+    guilt-3p setup-extension
+    ```
+    Follow the on-screen instructions to load the unpacked extension in Chrome/Edge/Brave.
+
+## Usage
+
+### Standard CLI Mode
+Runs the tracker with console output.
+```bash
+guilt-3p run
+```
+Commands while running:
+- `break 5`: Take a 5-minute break.
+- `quit`: Exit.
+
+### TUI Mode (New!)
+Runs the tracker with a fancy Textual dashboard.
+```bash
+guilt-3p-tui
+```
+Shortcuts:
+- `b`: Take a 5-minute break.
+- `q`: Quit.
+
+## Customization
+
+You can edit `config.json` to personalize your experience.
+
+Example `config.json`:
+```json
+{
+  "general": {
+    "extend_defaults": true
+  },
+  "custom_roasts": [
+    "Why are you watching cat videos?",
+    "Your code is crying."
+  ],
+  "custom_forbidden": [
+    "reddit",
+    "youtube"
+  ]
+}
+```

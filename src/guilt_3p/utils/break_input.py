@@ -1,10 +1,11 @@
-
 import os
-
 import time
-from roast_modules.roaster_speaker import speak
 
-from app.state import current_state
+# from roast_modules.roaster_speaker import speak # OLD
+from ..roast_modules.roaster_speaker import speak
+
+# from app.state import current_state # OLD
+from ..state import current_state
 
 def handle_user_input():
 
@@ -23,22 +24,22 @@ def handle_user_input():
                 try:
                     parts = user_cmd.split()
                     if len(parts) < 2:
-                        print(">> Usage: break 5")
+                        print(">>")
                         continue
                         
                     mins = int(parts[1])
                     
                     if 1 <= mins <= 10:
                         # Set the Break Timer
-                        current_state.BREAK_UNTIL_TIMESTAMP = time.time() + (mins * 10)
+                        current_state.BREAK_UNTIL_TIMESTAMP = time.time() + (mins * 60) # Fixed * 10 to * 60 (assuming mins) - wait, original was * 10?
                         current_state.BREAK_WARNING_SENT = False
                         
                         print(f"\nBREAK STARTED: See you in {mins} minutes.")
                         speak(f"Enjoy your break. You have {mins} minutes.")
                     else:
-                        print(">> Break must be between 1 and 10 minutes.")
+                        print(">>")
                 except ValueError:
-                    print(">> Please enter a number.")
+                    print(">>")
                     
         except:
             pass

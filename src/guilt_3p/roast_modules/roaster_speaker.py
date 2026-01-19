@@ -4,8 +4,9 @@ import os
 import ctypes
 from gtts import gTTS
 from playsound import playsound
-from data.roasts import ROASTS
-from data.praises import PRAISES
+# from data.roasts import ROASTS # OLD
+# from data.praises import PRAISES # OLD
+from ..config import config
 
 def show_error_popup(text, error_type):
     
@@ -48,16 +49,14 @@ def play_audio_and_popup(text, speak_type):
 
     threading.Thread(target=_run).start()
 
-def speak(text, speak_type):
+def speak(text, speak_type="info"): # Added default arg "info" because it was called with 1 arg in some places
     play_audio_and_popup(text, speak_type)
 
 def speak_alert(speak_type):
     phrase = ""
     if speak_type == "roast":
-        phrase = random.choice(ROASTS)
+        phrase = random.choice(config.roasts)
         play_audio_and_popup(phrase, speak_type)
     else:
-        phrase = random.choice(PRAISES)
+        phrase = random.choice(config.praises)
         play_audio_and_popup(phrase, speak_type)
-
-    

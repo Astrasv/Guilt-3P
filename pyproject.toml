@@ -1,7 +1,11 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "roast-proto"
+name = "guilt-3p"
 version = "0.1.0"
-description = "Add your description here"
+description = "A productivity tool that roasts you for slacking off."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -12,4 +16,9 @@ dependencies = [
     "plyer>=2.1.0",
     "psutil>=7.2.1",
     "pyttsx3>=2.99",
+    "platformdirs>=4.0.0",
+    "textual>=0.47.1",
 ]
+
+[project.scripts]
+guilt-3p = "guilt_3p.main:entry_point"

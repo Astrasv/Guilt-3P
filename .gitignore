@@ -4,3 +4,6 @@ __pycache__/
 
 # Virtual environments
 .venv
+
+# Logs
+guilt_3p_debug.log
