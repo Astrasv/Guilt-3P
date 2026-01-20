@@ -1,5 +1,8 @@
 # Guilt-3P
 
+[Python package is available in PyPi](https://pypi.org/project/guilt-3p/)
+
+Directly use  `pip install guilt-3p` for installing this systemn
 
 ```text
 
@@ -14,6 +17,9 @@
 ```
 
 Guilt 3P (is read as Guilt Trip)
+
+
+
 
 The 3Ps stands for **Petty Productivity Patrol** or an old tamil meme **Parama-Poi-Padi da** Guilt-3P is a simple CLI system - By dev for devs - which roasts you when you get distracted. This makes you guilt trip instead of blocking webpages (no blocking only roasting)
 

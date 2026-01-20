@@ -1,9 +1,16 @@
 Metadata-Version: 2.4
 Name: guilt-3p
 Version: 0.1.0
-Summary: A productivity tool that roasts you for slacking off.
+Summary: A CLI productivity tool that roasts you for slacking off.
+Author-email: Sudharsan Vanamali <sudharsan.vanamali@gmail.com>
+Project-URL: Homepage, https://github.com/Astrasv/guilt-3p
+Project-URL: Issues, https://github.com/Astrasv/guilt-3p/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: flask>=3.1.2
 Requires-Dist: flask-cors>=6.0.2
 Requires-Dist: gtts>=2.5.4
@@ -13,8 +20,26 @@ Requires-Dist: psutil>=7.2.1
 Requires-Dist: pyttsx3>=2.99
 Requires-Dist: platformdirs>=4.0.0
 Requires-Dist: textual>=0.47.1
+Requires-Dist: rich>=13.7.0
+Requires-Dist: build>=1.4.0
+Requires-Dist: twine>=6.2.0
+Dynamic: license-file
 
 # Guilt-3P
+
+
+```text
+
+  ░██████             ░██░██    ░██        ░██████  ░█████████  
+ ░██   ░██               ░██    ░██       ░██   ░██ ░██     ░██ 
+░██        ░██    ░██ ░██░██ ░████████          ░██ ░██     ░██ 
+░██  █████ ░██    ░██ ░██░██    ░██         ░█████  ░█████████  
+░██     ██ ░██    ░██ ░██░██    ░██             ░██ ░██         
+ ░██  ░███ ░██   ░███ ░██░██    ░██       ░██   ░██ ░██         
+  ░█████░█  ░█████░██ ░██░██     ░████     ░██████  ░██   
+
+```
+
 Guilt 3P (is read as Guilt Trip)
 
 The 3Ps stands for **Petty Productivity Patrol** or an old tamil meme **Parama-Poi-Padi da** Guilt-3P is a simple CLI system - By dev for devs - which roasts you when you get distracted. This makes you guilt trip instead of blocking webpages (no blocking only roasting)
@@ -113,3 +138,31 @@ Example `config.json`:
 
 **Git😉 back to work.** Adios!!!
 
+---
+
+## 🐳 Docker Support
+
+You can run Guilt-3P using Docker, but be aware of some limitations due to the containerized environment (headless nature).
+
+### Limitations
+- **Window Tracking**: By default, Docker containers cannot see your host's active windows. The "distraction detection" based on window titles might not work without advanced configuration (mounting X11 sockets, etc.).
+- **Audio**: Text-to-speech audio might require passing audio devices to the container (`--device /dev/snd`).
+- **Window Switching**: The feature to force-switch windows (bring VS Code to front) will not work from inside a standard container.
+
+### Building the Image
+```bash
+docker build -t guilt-3p .
+```
+
+### Running the Container
+To run the application (server and basic logic):
+```bash
+docker run -p 5000:5000 --name guilt-3p-app guilt-3p
+```
+
+### Running Helper Commands
+To run setup commands or initialize config:
+```bash
+docker run --rm guilt-3p setup-extension
+docker run --rm -v $(pwd):/app/config guilt-3p init-config
+```

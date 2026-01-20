@@ -1,3 +1,4 @@
+LICENSE
 README.md
 pyproject.toml
 src/guilt_3p/__init__.py
@@ -11,6 +12,9 @@ src/guilt_3p.egg-info/dependency_links.txt
 src/guilt_3p.egg-info/entry_points.txt
 src/guilt_3p.egg-info/requires.txt
 src/guilt_3p.egg-info/top_level.txt
+src/guilt_3p/assets/extension/background.js
+src/guilt_3p/assets/extension/manifest.json
+src/guilt_3p/data/__init__.py
 src/guilt_3p/data/browsers.py
 src/guilt_3p/data/forbidden.py
 src/guilt_3p/data/nagging.py
@@ -21,4 +25,5 @@ src/guilt_3p/roast_modules/bring_vscode.py
 src/guilt_3p/roast_modules/log_shame.py
 src/guilt_3p/roast_modules/roaster_speaker.py
 src/guilt_3p/roast_modules/send_nag.py
+src/guilt_3p/utils/__init__.py
 src/guilt_3p/utils/break_input.py
